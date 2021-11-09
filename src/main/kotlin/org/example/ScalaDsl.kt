@@ -10,9 +10,9 @@ class ScalaDsl private constructor(context: ActorContext<Cmd>) : AbstractBehavio
     interface Cmd
     data class PrintMe(val msg: String) : Cmd
 
-    override fun onMessage(msg: Cmd?): Behavior<Cmd> {
+    override fun onMessage(msg: Cmd): Behavior<Cmd> {
         when (msg) {
-            is PrintMe -> (::onPrintMe)(msg)
+            is PrintMe -> onPrintMe(msg)
         }
 
         return this
