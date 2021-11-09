@@ -5,10 +5,17 @@ plugins {
 group = "org.example"
 version = "1.0-SNAPSHOT"
 
+object Versions {
+    const val akka = "2.6.17"
+    const val scala = "2.13"
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
+//    implementation(kotlin("stdlib"))
+    implementation(platform("com.typesafe.akka:akka-bom_${Versions.scala}:${Versions.akka}"))
+    implementation("com.typesafe.akka:akka-actor-typed_${Versions.scala}")
 }
