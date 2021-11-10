@@ -12,11 +12,11 @@ class App private constructor(context: ActorContext<String>) : AbstractBehavior<
         .build()
 
     private fun start(): Behavior<String> {
-        val worker = context.spawn(Worker.create(), "worker")
-        worker.tell(Worker.SomeMsg("Hi"))
-
         val scalaDsl = context.spawn(ScalaDsl.create(), "scala-dsl")
         scalaDsl.tell(ScalaDsl.PrintMe("Hi scala dsl"))
+
+        val worker = context.spawn(Worker.create(), "worker")
+        worker.tell(Worker.SomeMsg("Hi", scalaDsl))
 
         return this
     }

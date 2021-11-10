@@ -18,4 +18,7 @@ dependencies {
     implementation(platform("com.typesafe.akka:akka-bom_${Versions.scala}:${Versions.akka}"))
     implementation("com.typesafe.akka:akka-actor-typed_${Versions.scala}")
     implementation("ch.qos.logback:logback-classic:1.2.6")
+
+    testImplementation("com.typesafe.akka:akka-actor-testkit-typed_${Versions.scala}")
+    testImplementation("junit:junit:4.13.2")
 }
